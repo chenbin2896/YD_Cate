@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>temp</title>
+    <script type="text/javascript" src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
+    <script th:inline="javascript">
+        $(function () {
+            //alert("zhong")
+            var messge = [[${ob}]];
+            if(messge!=null){
+                alert(messge);
+            }
+
+        });
+    </script>
+</head>
+<body>
+
+
+</body>
+</html>

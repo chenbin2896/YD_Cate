@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://g.alicdn.com/sj/dpl/1.5.1/css/sui.min.css" rel="stylesheet">
+    <script type="text/javascript" src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="http://g.alicdn.com/sj/dpl/1.5.1/js/sui.min.js"></script>
+    <title>订单完成</title>
+
+</head>
+<body>
+    <div class="sui-row-fluid">
+        <div class="span12" style="text-align: center;margin-bottom: 40px;">
+            <img src="/page/image_02/pay_state.png" style="margin-bottom:20px;width: 80px;height: 80px;margin-top: 40px;d">
+            <br>
+            <span style="font-size: 18px;font-weight: bold;line-height: 40px;">支付成功</span>
+            <br>
+            <span style="font-size: 14px;line-height: 40px;">太原科技大学科大外卖网络科技有限公司</span>
+            <br>
+            <span style="color: #666666;">支付时间</span>
+            <span style="color: #666666;" th:text="${#dates.format(tbCusorder1.updateTime,'YYYY-MM-dd-HH:mm:ss')}"></span>
+        </div>
+    </div>
+    <div class="sui-row-fluid">
+        <div class="span12" style="text-align:center;font-size: 16px;line-height: 55px;">
+            <span style="font-weight: bold" >订单号:</span>
+            <span th:text="${tbCusorder1.id}"></span>
+            <br>
+            <span style="font-weight: bold">支付金额:</span>
+            <span th:text="${tbCusorder1.orderAmount}+'.00元'"></span>
+        </div>
+    </div>
+    <div class="sui-row-fluid">
+        <div class="span10 offset1" style="margin-top: 40px;">
+            <button class="sui-btn btn-success span12" style="height: 36px;font-size: 16px;"
+            onclick="location.href='/customer_page/index'">返回首页</button>
+        </div>
+    </div>
+</body>
+</html>

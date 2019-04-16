@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://g.alicdn.com/sj/dpl/1.5.1/css/sui.min.css" rel="stylesheet">
+    <script type="text/javascript" src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="http://g.alicdn.com/sj/dpl/1.5.1/js/sui.min.js"></script>
+    <title>评价商品</title>
+    <script>
+        $(function () {
+            $('#t1 td').mouseover(function () {
+                $(this).text('★').prevAll().text('★').end().nextAll().text('☆');
+            }).mouseout(function () {
+                //当鼠标离开时把所有的td都变成☆,把具有isclicked属性的td以及之前的td,变成★
+                $('t1 td').text('☆');
+                $('#t1 td[isclicked=isclicked]').text('★').prevAll().text('★');
+            }).click(function () {
+                //点击时给当前的td增加isclicked属性
+                $(this).attr('isclicked', 'isclicked').siblings().removeAttr('isclicked');
+                //点击某个td时显示分数
+                $('#pscore').text($(this).attr('score'));
+            }).attr('score', function (index) {
+                return (index + 1) * 10;
+            });
+
+            $('#t2 td').mouseover(function () {
+                $(this).text('★').prevAll().text('★').end().nextAll().text('☆');
+            }).mouseout(function () {
+                //当鼠标离开时把所有的td都变成☆,把具有isclicked属性的td以及之前的td,变成★
+                $('t2 td').text('☆');
+                $('#t2 td[isclicked=isclicked]').text('★').prevAll().text('★');
+            }).click(function () {
+                //点击时给当前的td增加isclicked属性
+                $(this).attr('isclicked', 'isclicked').siblings().removeAttr('isclicked');
+                //点击某个td时显示分数
+                $('#pscore').text($(this).attr('score'));
+            }).attr('score', function (index) {
+                return (index + 1) * 10;
+            });
+        })
+    </script>
+</head>
+<body>
+<div class="sui-row-fluid" style="background: #13D1BE;font-size: 16px;">
+    <div class="span12" style="font-weight: bold;height:40px;line-height:40px;color:#FFFFFF;text-align: center">
+        商品评价
+    </div>
+</div>
+<p id="pscore">
+</p>
+
+<div class="sui-row-fluid" style="background: #FFFFFF;padding-top: 10px;">
+    <div class="span12" style="border-bottom: 1px #cccccc solid">
+        <div class="span2">
+            <img src="/page/image_02/suancaiyu.jpg" style="width: 50px;height: 50px;margin: 5px;border-radius: 5px;">
+        </div>
+        <div class="span10">
+            <div class="span12">
+                <span class="pull-left" style="font-size: 14px;" th:text="${product_name}"></span>
+                <span class="pull-right" style="font-size: 14px;" th:text="${shop_name}"></span>
+            </div>
+            <div class="sui-row-fluid">
+                <div class="span12">
+
+                    <span style="font-size: 16px;line-height:30px;font-weight: bold"
+                          th:text="'总价：'+${product_price}+'元'"></span>
+                    <span class="pull-right"
+                          style="margin-right:10px;display: block;border:1px #13D1BE solid;border-radius: 10px;color: #13D1BE;padding-left: 5px;padding-right: 5px;">科大吃货专送</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="sui-row-fluid">
+    <div class="span12">
+        <span class="pull-left"
+              style="padding-left: 20px;line-height:40px;font-size: 20px;font-weight: bold;">配送员评价</span>
+        <span class="pull-right" style="font-size:24px;color: orange;line-height:40px;padding-right: 20px;">
+            <table id="t1" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td>
+            ☆
+        </td>
+        <td>
+            ☆
+        </td>
+        <td>
+            ☆
+        </td>
+        <td>
+            ☆
+        </td>
+        <td>
+            ☆
+        </td>
+    </tr>
+</table>
+        </span>
+    </div>
+</div>
+
+<div class="sui-row-fluid">
+    <div class="span12">
+        <span class="pull-left"
+              style="padding-left: 20px;line-height:40px;font-size: 20px;font-weight: bold;">商品评价</span>
+        <span class="pull-right" style="font-size:24px;color: orange;line-height:40px;padding-right: 20px;">
+            <table id="t2" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td>
+            ☆
+        </td>
+        <td>
+            ☆
+        </td>
+        <td>
+            ☆
+        </td>
+        <td>
+            ☆
+        </td>
+        <td>
+            ☆
+        </td>
+    </tr>
+</table>
+        </span>
+    </div>
+</div>
+</body>
+</html>

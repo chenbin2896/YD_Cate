@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://g.alicdn.com/sj/dpl/1.5.1/css/sui.min.css" rel="stylesheet">
+    <script type="text/javascript" src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="http://g.alicdn.com/sj/dpl/1.5.1/js/sui.min.js"></script>
+
+    <title>订单</title>
+</head>
+<body>
+    <div class="">
+        <div class="sui-row-fluid" style="background: #13D1BE;font-size: 16px;">
+            <div class="span12" style="font-weight: bold;height:40px;line-height:40px;color:#FFFFFF;text-align: center">
+                我的订单
+            </div>
+        </div>
+        <div class="sui-row-fluid">
+            <div class="span12" style="margin-bottom: 20px;">
+                <div class="span3" style="text-align: center" onclick="location.href='/customer_page/mine_order?state=2&cus_id=1'">
+                    <img src="/page/image_02/daifukuan.png" style="width: 40px;height: 40px;margin: 10px;">
+                    <br>
+                    <span style="margin: 10px;">待付款</span>
+                </div>
+
+                <div class="span3" style="text-align: center">
+                    <img src="/page/image_02/eval.png" style="width: 40px;height: 40px;margin: 10px;" onclick="location.href='/customer_page/mine_order?state=4&cus_id=1'">
+                    <br>
+                    <span style="margin: 10px;">待评价</span>
+                </div>
+
+                <div class="span3" style="text-align: center">
+                    <img src="/page/image_02/refund.png" style="width: 40px;height: 40px;margin: 10px;" onclick="location.href='/customer_page/mine_order?state=6&cus_id=1'">
+                    <br>
+                    <span style="margin: 10px;">退款</span>
+                </div>
+
+                <div class="span3" style="text-align: center" onclick="location.href='/customer_page/mine_order?state=1&cus_id=1'">
+                    <img src="/page/image_02/quanbudingdan.png" style="width: 40px;height: 40px;margin: 10px;">
+                    <br>
+                    <span style="margin: 10px;">全部订单</span>
+                </div>
+            </div>
+        </div>
+        <div class="sui-row-fluid" style="background: #FFFFFF;padding-top: 10px;" th:each="tbCusorderList:${tbCusorderList}">
+            <div class="span12" style="border-bottom: 1px #cccccc solid">
+                <div class="span2">
+                    <img src="/page/image_02/suancaiyu.jpg" style="width: 50px;height: 50px;margin: 5px;border-radius: 5px;">
+                </div>
+                <div class="span10">
+                    <div class="span12">
+                        <span class="pull-left" style="font-size: 14px;" th:text="${tbCusorderList.orderName}"></span>
+                        <span class="pull-right" style="color: #13D1BE;padding-right: 10px;" th:if="${tbCusorderList.orderState==1}">已确认</span>
+                        <span class="pull-right" style="color: #13D1BE;padding-right: 10px;" th:if="${tbCusorderList.orderState==0}">待确认</span>
+                        <span class="pull-right" style="color: orange;padding-right: 10px;" th:if="${tbCusorderList.orderState==2}">正在配送</span>
+                        <span class="pull-right" style="color: #13D1BE;padding-right: 10px;" th:if="${tbCusorderList.orderState==3}">已完成</span>
+                        <span class="pull-right" style="color: #0066cc;padding-right: 10px;" th:if="${tbCusorderList.orderState==4}">未评价
+                        <a th:href="'/customer_page/evalProductHtml?sell_id='+${tbCusorderList.orderShopId}+'&product_name='+${tbCusorderList.orderName}+'&product_price='+${tbCusorderList.orderAmount}">
+                            <button class="sui-btn btn-primary" >立即评价</button>
+                            </a>
+                        </span>
+                        <span class="pull-right" style="color: #0066cc;padding-right: 10px;" th:if="${tbCusorderList.payState==-1}">已退款</span>
+                        <span class="pull-right" style="color: red;padding-right: 10px;" th:if="${tbCusorderList.payState==0}">待支付
+                            <a style="color: #FFFFFF;" th:href="@{'/customer_page/pay_state?orderId='+${tbCusorderList.id}}">
+                        <button class="sui-btn btn-success">立即支付</button>
+                            </a>
+                        </span>
+                    </div>
+                    <div class="sui-row-fluid">
+                        <div class="span12">
+                            <span th:text="'下单时间:'+${#dates.format(tbCusorderList.createTime,'YYYY-MM-dd HH:mm:ss')}"></span>
+                            <br>
+                            <span style="font-size: 16px;line-height:30px;font-weight: bold" th:text="'总价：'+${tbCusorderList.orderAmount}+'元'"></span>
+                            <span class="pull-right" style="margin-right:10px;display: block;border:1px #13D1BE solid;border-radius: 10px;color: #13D1BE;padding-left: 5px;padding-right: 5px;">科大吃货专送</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!--底部导航栏-->
+        <div class="navbar-fixed-bottom" style="background: #FFFFFF;height: 40px;">
+            <div class="sui-row-fluid" >
+                <div class="span4" style="background: #FFFFFF;height: 40px;text-align: center" onclick="location.href='/customer_page/index'">
+                    <div>
+                        <img src="/page/image/index.png" style="width:20px;height: 20px;">
+                    </div>
+                    <div>
+                        <span>首页</span>
+                    </div>
+                </div>
+
+                <div class="span4" style="background: #13D1BE;height: 40px;text-align: center" onclick="location.href='/customer_page/mine_order?state=0&cus_id=1'">
+                    <div>
+                        <img src="/page/image/shopping.png" style="width:20px;height: 20px;">
+                    </div>
+                    <div>
+                        <span>订单</span>
+                    </div>
+                </div>
+                <div class="span4" style="background: #FFFFFF;height: 40px;text-align: center" onclick="location.href='/page/customer/mine.html'">
+                    <div>
+                        <img src="/page/image/mine.png" style="width:20px;height: 20px;">
+                    </div>
+                    <div>
+                        <span>我的</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

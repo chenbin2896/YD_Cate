@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <link href="http://g.alicdn.com/sj/dpl/1.5.1/css/sui.min.css" rel="stylesheet">
+    <script type="text/javascript" src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="http://g.alicdn.com/sj/dpl/1.5.1/js/sui.min.js"></script>
+    <title>搜索结果</title>
+
+</head>
+<body>
+<div class="sui-row-fluid">
+    <div class="span12" style="margin-top: 20px;">
+        <span style="font-size: 18px;font-weight: bold;padding-left: 20px;padding-top: 20px;">商品列表</span>
+        <span th:text="${sellProductRows.size()}+'条结果'"></span>
+    </div>
+</div>
+
+
+<div class="sui-row-fluid" style="background: #FFFFFF;padding-top: 10px;" th:each="sellProductList:${sellProductRows}">
+
+
+    <div class="span12" style="border-bottom: 1px #f2f2f2 solid">
+        <div class="span2">
+            <img src="/page/image_02/suancaiyu.jpg" style="width: 50px;height: 50px;margin: 5px;border-radius: 5px;">
+        </div>
+        <div class="span10">
+            <div class="span12">
+                <span class="pull-left" style="font-size: 14px;" th:text="${sellProductList.proName}"></span>
+                <!--<span class="pull-right" style="color: #13D1BE;padding-right: 10px;">营业中</span>-->
+            </div>
+            <div class="sui-row-fluid">
+                <div class="span12">
+                    <span style="font-size: 18px;font-weight: bold;color: orange;" th:text="'￥'+${sellProductList.proPrice}+'元'"></span>
+                    <span class="pull-right" style="padding-right: 10px;">
+                        <button class="sui-btn btn-success btn-large">订购</button>
+                    </span>
+                </div>
+            </div>
+
+            <div class="sui-row-fluid">
+                <div class="span3 offset9">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="sui-row-fluid">
+    <div class="span12" style="margin-top: 20px;">
+        <span style="font-size: 18px;font-weight: bold;padding-left: 20px;padding-top: 20px;">店铺列表</span>
+        <span th:text="${sellInfoRows.size()}+'条结果'"></span>
+    </div>
+</div>
+
+<div class="sui-row-fluid" style="background: #FFFFFF;padding-top: 10px;" th:each="sellinfoList:${sellInfoRows}">
+    <a style="color: #000000" th:href="@{'/customer_page/findShopInfoBySellId?sell_id='+${sellinfoList.id}}">
+        <div class="span12" style="border-bottom: 1px #cccccc solid"  >
+            <div class="span2">
+                <img src="/page/image_02/suancaiyu.jpg" style="width: 50px;height: 50px;margin: 5px;border-radius: 5px;">
+            </div>
+            <div class="span10">
+                <div class="span12">
+                    <span class="pull-left" style="font-size: 14px;" th:text="${sellinfoList.name}"></span>
+                    <span class="pull-right" style="color: #13D1BE;padding-right: 10px;" th:if="${sellinfoList.businessState==1}">营业中</span>
+                    <span class="pull-right" style="color: red;font-size: 14px;padding-right: 10px;" th:if="${sellinfoList.businessState==-1}">暂停营业</span>
+                </div>
+                <div class="sui-row-fluid">
+                    <div class="span12" th:text="'电话：'+${sellinfoList.shopPhone}">
+
+                    </div>
+                </div>
+
+                <div class="sui-row-fluid">
+                    <div class="span12">
+                        <span class="pull-right" style="margin-right:10px;display: block;border:1px #13D1BE solid;border-radius: 10px;color: #13D1BE;padding-left: 5px;padding-right: 5px;">科大吃货专送</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+
+</div>
+</body>
+</html>

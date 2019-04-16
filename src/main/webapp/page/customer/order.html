@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://g.alicdn.com/sj/dpl/1.5.1/css/sui.min.css" rel="stylesheet">
+    <script type="text/javascript" src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="http://g.alicdn.com/sj/dpl/1.5.1/js/sui.min.js"></script>
+    <title>确认订单</title>
+
+</head>
+<body style="background: #f2f2f2">
+<div class="sui-row-fluid" style="background: #FFFFFF;padding-top: 10px;">
+    <div class="span12" style="border-bottom: 1px #f2f2f2 solid;background: #FFFFFF;">
+        <div class="span2">
+            <img src="/page/image_02/suancaiyu.jpg" style="width: 50px;height: 50px;margin: 5px;border-radius: 5px;">
+        </div>
+        <div class="span10">
+            <div class="span12">
+                <span class="pull-left" style="font-size: 14px;" th:text="${tbCusorder.orderName}"></span>
+                <span class="pull-right" style="color: red;font-weight:bold;font-size: 16px;padding-right: 10px;" th:text="'￥'+${tbCusorder.orderAmount}+'元'"></span>
+            </div>
+            <div class="sui-row-fluid">
+                <div class="span12">
+                    <span style="font-size: 18px;font-weight: bold;color: orange;" th:text="'店铺：'+${tbSellinfo.name}"></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="sui-row-fluid">
+    <div class="span12" style="background: #FFFFFF;margin-top:20px;height: 50px;line-height: 50px;border-bottom: 1px #f2f2f2 solid">
+        <span style="padding-left: 10px;font-size: 16px;">收货人：</span>
+        <input type="text" id="name" style="height: 40px;font-size:16px;line-height: 40px;outline: none;border-bottom: 1px #f2f2f2 solid;border-left: none;border-right: none;border-top: none;" th:value="${tbCusinfo.name}">
+    </div>
+</div>
+<div class="sui-row-fluid">
+    <div class="span12" style="background: #FFFFFF;margin-top:10px;height: 50px;line-height: 50px;border-bottom: 1px #f2f2f2 solid">
+        <span style="padding-left: 10px;font-size: 16px;">收货地址：</span>
+        <input type="text" id="address" style="height: 40px;font-size:16px;line-height: 40px;outline: none;border-bottom: 1px #f2f2f2 solid;border-left: none;border-right: none;border-top: none;" th:value="${tbCusinfo.address}">
+    </div>
+</div>
+<div class="sui-row-fluid">
+    <div class="span12" style="background: #FFFFFF;margin-top:10px;height: 50px;line-height: 50px;border-bottom: 1px #f2f2f2 solid">
+        <span style="padding-left: 10px;font-size: 16px;">电话：</span>
+        <input type="text" id="phone" style="height: 40px;font-size:16px;line-height: 40px;outline: none;border-bottom: 1px #f2f2f2 solid;border-left: none;border-right: none;border-top: none;" th:value="${tbCusinfo.phone}">
+    </div>
+</div>
+<div class="sui-row-fluid">
+    <div class="span12" style="position:absolute;bottom:0px;height: 40px;background: orange;color: #FFFFFF;text-align: center;line-height: 40px;">
+        <a style="color: #FFFFFF;" th:href="@{'/customer_page/pay_state?orderId='+${tbCusorder.id}}">
+            <span style="font-size: 18px;" th:text="'￥'+${tbCusorder.orderAmount}+'元&nbsp;立即支付'"></span>
+        </a>
+
+    </div>
+</div>
+</body>
+</html>

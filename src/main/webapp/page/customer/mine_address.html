@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://g.alicdn.com/sj/dpl/1.5.1/css/sui.min.css" rel="stylesheet">
+    <script type="text/javascript" src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="http://g.alicdn.com/sj/dpl/1.5.1/js/sui.min.js"></script>
+
+    <title>我的地址</title>
+    <script th:inline="javascript">
+        $(function () {
+
+            var messge = [[${message}]];
+            if(messge!=null){
+                alert(messge);
+            }
+
+        });
+
+        function saveAddress() {
+            var name = $('#name').val();
+            var phone = $('#phone').val();
+            var address = $('#address').val();
+            location.href='/customer_page/saveAddress?id=1&name='+name+'&phone='+phone+'&address='+address;
+        }
+    </script>
+</head>
+<body style="font-size: 12px;">
+    <div class="sui-row-fluid" style="background: #13D1BE;font-size: 16px;">
+        <div class="span12" style="font-weight: bold;height:40px;line-height:40px;color:#FFFFFF;text-align: center">
+            新增收货地址
+        </div>
+    </div>
+
+    <div class="sui-row-fluid" style="font-size: 14px;height: 50px;border-bottom: 1px #cccccc solid;line-height: 50px;">
+        <div class="span3" style="padding-left: 10px;">
+            <span>收货地址:</span>
+        </div>
+        <div class="span7" >
+            <input type="text" id="address" placeholder="请填写收货地址;例如：宿3301" style="outline: none;border:none;" th:value="${tbCusinfo.address}">
+        </div>
+
+    </div>
+    <div class="sui-row-fluid" style="font-size: 14px;height: 50px;border-bottom: 1px #cccccc solid;line-height: 50px;">
+        <div class="span3" style="padding-left: 10px;">
+            <span>联系人:</span>
+        </div>
+        <div class="span7">
+            <input type="text" id="name" placeholder="请填写收货人姓名" style="outline: none;border:none;" th:value="${tbCusinfo.name}">
+        </div>
+    </div>
+    <div class="sui-row-fluid" style="font-size: 14px;height: 50px;border-bottom: 1px #cccccc solid;line-height: 50px;">
+        <div class="span3" style="padding-left: 10px;">
+            <span>手机号:</span>
+        </div>
+        <div class="span7">
+            <input type="number" id="phone" placeholder="请填写手机号码" style="outline: none;border:none;" th:value="${tbCusinfo.phone}">
+        </div>
+    </div>
+
+    <div class="sui-row-fluid" style="margin-top: 20px;">
+        <div class="span12" style="text-align: center">
+            <button style="height: 40px;color: #000;width: 100%;background: #13D1BE;border: none;" onclick="saveAddress()">保存地址</button>
+        </div>
+    </div>
+</body>
+</html>

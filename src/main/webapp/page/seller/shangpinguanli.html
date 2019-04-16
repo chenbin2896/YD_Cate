@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://g.alicdn.com/sj/dpl/1.5.1/css/sui.min.css" rel="stylesheet">
+    <script type="text/javascript" src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="http://g.alicdn.com/sj/dpl/1.5.1/js/sui.min.js"></script>
+    <title>商品管理</title>
+
+</head>
+<body style="background: #f2f2f2">
+<div class="sui-row-fluid" style="background: #3366CC;font-size: 16px;border-bottom: 1px #f2f2f2 solid">
+    <div class="span12" style="font-weight: bold;height:40px;line-height:40px;color:#FFFFFF;text-align: center">
+        商品管理
+    </div>
+</div>
+<div class="sui-row-fluid">
+    <div class="span12" style="background: #00ca6d;text-align: center;line-height: 40px;margin-bottom: 20px;margin-top: 10px;" onclick="location.href='/seller_page/returnAddView'">
+        <span style="color: #FFFFFF;font-size: 16px;">添加商品</span>
+    </div>
+</div>
+<div class="sui-row-fluid" style="margin-bottom: 15px;background: #FFFFFF" th:each="tbSellproductList:${tbSellproductList}">
+    <div class="span12" style="line-height: 50px;border-bottom: 1px #f2f2f2 solid">
+        <div class="span2">
+            <img src="/page/image_02/suancaiyu.jpg" style="width: 40px;height: 40px;padding-left: 10px;"/>
+        </div>
+        <div class="span10">
+            <span style="padding-left: 10px;font-size: 16px;" th:text="${tbSellproductList.proName}"></span>
+            <span class="pull-right" style="padding-right: 10px;color: #FF0033;font-weight: bold;font-size: 18px;" th:text="'￥'+${tbSellproductList.proPrice}+'.00元'"></span>
+        </div>
+    </div>
+    <div class="span12" style="line-height: 30px;">
+        <span style="padding-left: 10px;font-size: 14px;color: red;" th:if="${tbSellproductList.proLevle==-1}">已下架</span>
+        <span style="padding-left: 10px;font-size: 14px;color: #3366cc;" th:if="${tbSellproductList.proLevle!=-1}">已上架</span>
+        <span class="pull-right" style="padding-right: 20px;" th:if="${tbSellproductList.proLevle!=-1}">
+            <a th:href="@{'/seller_page/returnUpdateView?id='+${tbSellproductList.id}}">
+                <button class="sui-btn">编辑</button>
+            </a>
+
+            <a th:href="@{'/seller_page/updateProductState?sell_id=1&product_name='+${tbSellproductList.proName}}">
+                <button class="sui-btn btn-danger" >下架</button>
+            </a>
+
+        </span>
+    </div>
+</div>
+
+</body>
+</html>

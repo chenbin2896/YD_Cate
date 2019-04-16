@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://g.alicdn.com/sj/dpl/1.5.1/css/sui.min.css" rel="stylesheet">
+    <script type="text/javascript" src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="http://g.alicdn.com/sj/dpl/1.5.1/js/sui.min.js"></script>
+    <title>个人中心</title>
+</head>
+<body>
+<div class="">
+    <!--<div class="sui-row-fluid">
+        <div class="span12" style="background: #13D1BE;">
+            <div class="" style="text-align: center;color: #FFFFFF;line-height: 35px;">我的</div>
+        </div>
+    </div>-->
+    <div class="sui-row-fluid" style="height: 120px;background: #13D1BE;">
+        <div class="span10 offset1" style="height: 120px;background: #13D1BE;line-height: 120px;">
+            <img src="/page/image_02/head_icon.png" style="width: 50px;height: 50px;">
+            <span style="color: #FFFFFF;font-size: 14px;padding-left: 10px;" th:text="${session.cus_id}">37233347</span>
+        </div>
+    </div>
+    <!--<div class="sui-row-fluid" style="background: #FFFFFF">
+        <div class="span12" style="line-height: 40px;border-bottom: 1px #f2f2f2 solid" onclick="location.href='dingdan.html'">
+            <span><img src="../image/mine_order_icon.png" style="width: 20px;height: 20px; margin-right: 5px;margin-left: 5px;"></span>
+            <span style="color: #000000;font-size: 14px;">我的订单</span>
+        </div>
+    </div>
+
+    <div class="sui-row-fluid" style="background: #FFFFFF">
+        <div class="span12" style="line-height: 40px;border-bottom: 1px #f2f2f2 solid" onclick="location.href='mine_address.html'">
+            <span><img src="../image/mine_address.png" style="width: 20px;height: 20px; margin-right: 5px;margin-left: 5px;"></span>
+            <span style="color: #000000;font-size: 14px;">我的地址</span>
+        </div>
+    </div>-->
+    
+
+    <!--list-->
+    <div class="sui-row-fluid"  style="margin-top: 15px;">
+        <div class="span12">
+            <span style="font-size: 14px;font-weight: bold;padding-left: 15px;">常用工具</span>
+        </div>
+    </div>
+    <div class="sui-row-fluid" style="border-bottom: 1px #f2f2f2 solid;padding-bottom: 10px;">
+        <div class="span12">
+            <div class="span3" style="text-align: center;" onclick="location.href='/customer_page/mine_address?id=1'">
+                <img src="../image/mine_address.png" style="width: 35px;height: 35px;margin: 10px;">
+                <br>
+                <span>我的地址</span>
+            </div>
+            <div class="span3" style="text-align: center;" onclick="location.href='/customer_page/mine_eval?id=1'">
+                <img src="../image_02/eval.png" style="width: 35px;height: 35px;margin: 10px;">
+                <br>
+                <span>我的评价</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="sui-row-fluid"  style="margin-top: 15px;">
+        <div class="span12">
+            <span style="font-size: 14px;font-weight: bold;padding-left: 15px;">科大吃货服务</span>
+        </div>
+    </div>
+
+    <div class="sui-row-fluid" style="border-bottom: 1px #f2f2f2 solid;padding-bottom: 10px;">
+        <div class="span12">
+            <div class="span3" style="text-align: center;" onclick="location.href='/page/customer/hezuo_list.html'">
+                <img src="/page/image_02/hezuo.png" style="width: 35px;height: 35px;margin: 10px;">
+                <br>
+                <span>我要合作</span>
+            </div>
+            <div class="span3" style="text-align: center;" onclick="location.href='/page/customer/about_company.html'">
+                <img src="../image_02/guanyu.png" style="width: 35px;height: 35px;margin: 10px;">
+                <br>
+                <span>关于科大外卖</span>
+            </div>
+        </div>
+    </div>
+
+
+    <!--底部导航栏-->
+    <div class="navbar-fixed-bottom" style="background: #FFFFFF;height: 40px;">
+        <div class="sui-row-fluid" >
+            <div class="span4" style="background: #FFFFFF;height: 40px;text-align: center" onclick="location.href='/customer_page/index'">
+                <div>
+                    <img src="/page/image/index.png" style="width:20px;height: 20px;">
+                </div>
+                <div>
+                    <span>首页</span>
+                </div>
+            </div>
+
+            <div class="span4" style="background: #FFFFFF;height: 40px;text-align: center" onclick="location.href='/customer_page/mine_order?state=0&cus_id=1'">
+                <div>
+                    <img src="/page/image/shopping.png" style="width:20px;height: 20px;">
+                </div>
+                <div>
+                    <span>订单</span>
+                </div>
+            </div>
+            <div class="span4" style="background: #13D1BE;height: 40px;text-align: center" onclick="location.href='mine.html'">
+                <div>
+                    <img src="/page/image/mine.png" style="width:20px;height: 20px;">
+                </div>
+                <div>
+                    <span>我的</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

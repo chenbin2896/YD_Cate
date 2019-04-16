@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="../plugins/angularjs/angular.min.js"></script>
+    <title>ddd</title>
+
+    <script>
+        var axbt = angular.module('axbt',[]);
+        axbt.controller('categoryController',function ($scope,$http) {
+            $http.get('http://localhost/mancategory/findAll').success(
+                function (response) {
+                    $scope.categoryList = response;
+                    console.log(response);
+                }
+            )
+        });
+    </script>
+</head>
+<body ng-app="axbt">
+
+<div ng-controller="categoryController">
+    <select ng-model="mycity" ng-options="city.id as city.name for city in Cities"></select>
+    {{mycity}}
+</div>
+</body>
+</html>

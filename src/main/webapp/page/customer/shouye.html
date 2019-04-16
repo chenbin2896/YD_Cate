@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <link href="http://g.alicdn.com/sj/dpl/1.5.1/css/sui.min.css" rel="stylesheet">
+    <script type="text/javascript" src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="http://g.alicdn.com/sj/dpl/1.5.1/js/sui.min.js"></script>
+
+
+    <!-- 新 Bootstrap4 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- popper.min.js 用于弹窗、提示、下拉菜单 -->
+    <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+
+    <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+
+
+    <link href="../css/shouye.css" rel="stylesheet" type="text/css">
+    <title>科大吃货</title>
+    <style>
+        #search1:focus{
+            border: none;
+        }
+        .shouye-search{
+            height: 60px;
+            background: #13D1BE;
+            line-height: 60px;
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript">
+        function search() {
+            var comment = $('#search1').val();
+            location.href= '/customer_page/search?comment='+comment;
+        }
+    </script>
+</head>
+<body style="font-size: 12px;background: #f2f2f2">
+<!--搜索框-->
+<div class="sui-row-fluid ">
+    <div class="span12 shouye-search" style="position: fixed;top:0px;">
+        <img src="/page/image_02/brand.JPG" style="width: 35px;height: 35px;border-radius: 10px;margin-right: 10px;">
+        <input type="text"  id="search1" placeholder="&nbsp;&nbsp;搜商品，搜店铺"  style="  width:66.33266533%;height: 35px;display:inline;border:none;border-radius:10px;padding-left: 5px;">
+        <button class="sui-btn" style="height: 35px;border-radius: 10px;line-height: 35px;width: 60px;font-size: 14px;" onclick="search()">搜索</button>
+    </div>
+</div>
+<!--幻灯片-->
+
+<div id="demo" class="carousel slide" data-ride="carousel" style="margin-top: 60px;">
+
+    <!-- 指示符 -->
+    <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+    </ul>
+
+    <!-- 轮播图片 -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://static.runoob.com/images/mix/img_fjords_wide.jpg">
+        </div>
+        <div class="carousel-item">
+            <img src="https://static.runoob.com/images/mix/img_nature_wide.jpg">
+        </div>
+        <div class="carousel-item">
+            <img src="https://static.runoob.com/images/mix/img_mountains_wide.jpg">
+        </div>
+    </div>
+
+    <!-- 左右切换按钮 -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+
+</div>
+<!--<div class="row">
+    <div class="col-sm-3" style="text-align: center;margin-top: 10px;" onclick="location.href='product_category.html'"
+    th:each="mancategoryList:${mancategoryList}">
+        <img src="/page/image_02/zaocan.png" style="width: 40px;height: 40px;">
+        <br>
+        <span th:text="${mancategoryList.name}"></span>
+    </div>
+
+</div>-->
+
+
+<!--商品分类-->
+
+<div class="" style="background: #FFFFFF;padding-top: 10px;">
+
+    <div  style="width:25%;margin-top:20px;float:left;text-align: center;"
+          th:each="mancategoryList:${mancategoryList}" >
+        <a style="color: #000;" th:href="@{'/customer_page/findProductByCategory?pro_category_id='+${mancategoryList.id}}">
+            <img src="/page/image_02/zaocan.png" style="width: 40px;height: 40px;">
+            <br>
+            <span th:text="${mancategoryList.name}"></span>
+        </a>
+
+    </div>
+
+</div>
+
+<!--店铺列表-->
+<div class="sui-row-fluid" style="background: #FFFFFF;margin-top: 10px;border-bottom: 1px #cccccc solid;color: #666666;line-height: 30px;">
+    <div class="span12" style="text-align: center">
+        -猜你喜欢-
+    </div>
+</div>
+<div class="sui-row-fluid" style="background: #FFFFFF;padding-top: 10px;" th:each="sellinfoList:${sellinfoList}">
+    <a style="color: #000000" th:href="@{'/customer_page/findShopInfoBySellId?sell_id='+${sellinfoList.id}}">
+        <div class="span12" style="border-bottom: 1px #cccccc solid"  >
+            <div class="span2">
+                <img src="/page/image_02/17.jpg" style="width: 50px;height: 50px;margin: 5px;border-radius: 5px;">
+            </div>
+            <div class="span10">
+                <div class="span12">
+                    <span class="pull-left" style="font-size: 14px;" th:text="${sellinfoList.name}"></span>
+                    <span class="pull-right" style="color: #13D1BE;padding-right: 10px;" th:if="${sellinfoList.businessState==1}">营业中</span>
+                    <span class="pull-right" style="color: red;font-size: 14px;padding-right: 10px;" th:if="${sellinfoList.businessState==-1}">暂停营业</span>
+                </div>
+                <div class="sui-row-fluid">
+                    <div class="span12" th:text="'电话：'+${sellinfoList.shopPhone}">
+
+                    </div>
+                </div>
+
+                <div class="sui-row-fluid">
+                    <div class="span12">
+                        <span class="pull-right" style="margin-right:10px;display: block;border:1px #13D1BE solid;border-radius: 10px;color: #13D1BE;padding-left: 5px;padding-right: 5px;">科大吃货专送</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+
+</div>
+
+<div style="height: 100px;">
+
+</div>
+
+<!--底部导航栏-->
+<div class="navbar-fixed-bottom" style="background: #FFFFFF;height: 40px;margin-top: 40px;">
+    <div class="sui-row-fluid" >
+        <div class="span4" style="background: #13D1BE;height: 40px;text-align: center" onclick="location.href='/customer_page/index'">
+            <div>
+                <img src="/page/image/index.png" style="width:20px;height: 20px;">
+            </div>
+            <div>
+                <span>首页</span>
+            </div>
+        </div>
+
+        <div class="span4" style="background: #FFFFFF;height: 40px;text-align: center" onclick="location.href='/customer_page/mine_order?state=0&cus_id=1'">
+            <div>
+                <img src="/page/image/shopping.png" style="width:20px;height: 20px;">
+            </div>
+            <div>
+                <span>订单</span>
+            </div>
+        </div>
+        <div class="span4" style="background: #FFFFFF;height: 40px;text-align: center" onclick="location.href='/page/customer/mine.html'">
+            <div>
+                <img src="/page/image/mine.png" style="width:20px;height: 20px;">
+            </div>
+            <div>
+                <span>我的</span>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>
